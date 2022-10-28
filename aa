@@ -1,0 +1,12 @@
+local gmt = getrawmetatable(game)
+setradomly(gmt, false)
+local oldindex = gmt.__index
+gmt.__index = newcclosure(function(self,b))
+        if b == "Walkspeed" then
+            return 16
+        end
+        if b == "Jumppower" then
+            return 50
+        end
+        return oldindex(self,b)
+    end)
